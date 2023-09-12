@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" modified="2023-09-12T12:12:31.174Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="zcRB27UUKj24Xw9-0pHV" version="21.7.4" type="github">
+  <diagram name="Page-1" id="ApZn8poI1IOqipWBEFOF">
+    <mxGraphModel dx="1248" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-1" value="&lt;b&gt;Warrior&lt;br&gt;&lt;/b&gt;Name&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;string&lt;/b&gt;&lt;br&gt;Level&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;int&lt;/b&gt;&lt;br&gt;Class &lt;b&gt;(O)&lt;/b&gt;&lt;br&gt;EQ&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;(O)&lt;/b&gt;&lt;br&gt;Damage&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;(O)&lt;/b&gt;&lt;br&gt;Attributes&amp;nbsp;&lt;span style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b&gt;(O)&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#ff3333&quot;&gt;&lt;b&gt;Constructor&lt;br&gt;Level Up&lt;br&gt;Total Attributes&lt;br&gt;Display&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="240" width="200" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-2" target="DzqSWBCR9rU-HVa7zK85-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-2" target="DzqSWBCR9rU-HVa7zK85-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-2" value="&lt;b&gt;Class&lt;br&gt;&lt;/b&gt;Class Name&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;string&lt;/b&gt;&lt;br&gt;Attributes&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;(O)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1241" y="180" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-3" target="DzqSWBCR9rU-HVa7zK85-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-3" value="&lt;b&gt;Damage&lt;br&gt;&lt;/b&gt;&amp;nbsp;Attributes &lt;b&gt;(O)&lt;/b&gt;&lt;br&gt;Weapon Damage &lt;b&gt;(int)&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font color=&quot;#ff3333&quot;&gt;&lt;b&gt;Damage&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="275" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-4" target="DzqSWBCR9rU-HVa7zK85-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-4" target="DzqSWBCR9rU-HVa7zK85-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-4" value="&lt;b&gt;Attributes&lt;br&gt;&lt;/b&gt;Strength &lt;b&gt;int&lt;/b&gt;&lt;br&gt;Dexterity&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;int&lt;/b&gt;&lt;br&gt;Intelligence&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;int&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="50" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-10" target="DzqSWBCR9rU-HVa7zK85-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-10" value="&lt;b&gt;EQ&lt;br&gt;&lt;/b&gt;Armour Head&amp;nbsp;&lt;b&gt;(O)&lt;br&gt;&lt;/b&gt;Body Head&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;(O)&lt;/b&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Legs Head&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;(O)&lt;/b&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Weapon &lt;b&gt;(O)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="515" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-13" target="DzqSWBCR9rU-HVa7zK85-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-13" target="DzqSWBCR9rU-HVa7zK85-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-13" target="DzqSWBCR9rU-HVa7zK85-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-13" value="&lt;b&gt;Item&lt;br&gt;&lt;/b&gt;Name&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;string&lt;/b&gt;&lt;br&gt;Slot&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;string&lt;/b&gt;&lt;br&gt;Required Level&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;int&lt;/b&gt;&lt;br&gt;Attribute (armour or damage)&amp;nbsp;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;int&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="275" width="190" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="DzqSWBCR9rU-HVa7zK85-35" target="DzqSWBCR9rU-HVa7zK85-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-35" value="&lt;b&gt;Valid weapon/armour types&lt;br&gt;&lt;/b&gt;Item &lt;b&gt;(O)&lt;/b&gt;&lt;br&gt;&lt;br&gt;Equip" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="514" width="190" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="DzqSWBCR9rU-HVa7zK85-39" value="&lt;b&gt;Not valid weapon/armour types&lt;br&gt;&lt;/b&gt;Item &lt;b&gt;(O)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="60" width="190" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
