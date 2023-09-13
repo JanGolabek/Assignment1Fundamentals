@@ -26,7 +26,6 @@ namespace Assignment1.Warrior
 
         public int Damage { get; set; }
 
-
         public void LevelUp()
         {
             Level++;
@@ -49,8 +48,13 @@ namespace Assignment1.Warrior
             }
         }
 
-        public Warrior CreateWarrior(CharacterClass characterClass, string name)
+        public Warrior CreateWarrior(string name)
         {
+            // Generate a random character class
+            Random random = new Random();
+            // Assumes classes start from 1 to 4
+            CharacterClass characterClass = (CharacterClass)random.Next(1, 5); 
+
             HeroAttribute attributes;
             switch (characterClass)
             {
