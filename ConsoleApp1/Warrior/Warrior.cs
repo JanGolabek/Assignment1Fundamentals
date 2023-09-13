@@ -26,6 +26,7 @@ namespace Assignment1.Warrior
 
         public int Damage { get; set; }
 
+
         public void LevelUp()
         {
             Level++;
@@ -87,6 +88,7 @@ namespace Assignment1.Warrior
             };
 
             // Equip the warrior with a sword
+            warrior.Equipment.HeadArmor = Equipment.Helmet;
             warrior.Equipment.Weapon = Equipment.Sword;
 
             return warrior;

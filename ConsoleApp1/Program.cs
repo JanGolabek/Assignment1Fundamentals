@@ -19,7 +19,7 @@ namespace ConsoleApp1
                 "\nClass: " + warrior.Class +
                 "\nLevel: " + warrior.Level +
                 "\nLevel Attributes: " + warrior.Attributes + 
-                "\nEquipment: " + warrior.Equipment + 
+                "\n" +  warrior.Equipment.ToString() + 
                 "\nDamage: " + warrior.Damage
                 );
         }

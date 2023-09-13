@@ -15,7 +15,7 @@ internal class Equipment
     public Item LegsArmor { get; set;}
     public Item Weapon { get; set;}
 
-    Item helmet = new Item()
+    public static Item Helmet = new Item()
     {
         Name = "Helmet",
         Slot = Slot.Head,
@@ -30,6 +30,22 @@ internal class Equipment
         RequiredLevel = 1,
         ItemAttribute = 2,
     };
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("Equipped Items:");
+        if (HeadArmor != null)
+            sb.AppendLine($"Head Armor: {HeadArmor.Name}");
+        if (BodyArmor != null)
+            sb.AppendLine($"Body Armor: {BodyArmor.Name}");
+        if (LegsArmor != null)
+            sb.AppendLine($"Legs Armor: {LegsArmor.Name}");
+        if (Weapon != null)
+            sb.AppendLine($"Weapon: {Weapon.Name}");
+
+        return sb.ToString();
+    }
 
 }
 
