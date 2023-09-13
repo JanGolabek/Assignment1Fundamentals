@@ -49,6 +49,12 @@ namespace Assignment1.Warrior
             }
         }
 
+        public bool CanEquipItem(Item item)
+        {
+            // Check if the warrior's level is greater than or equal to the item's RequiredLevel
+            return Level >= item.RequiredLevel;
+        }
+
         public Warrior CreateWarrior(string name)
         {
             // Generate a random character class
@@ -87,9 +93,19 @@ namespace Assignment1.Warrior
                 Damage = 1,
             };
 
-            // Equip the warrior with a sword
-            warrior.Equipment.HeadArmor = Equipment.Helmet;
-            warrior.Equipment.Weapon = Equipment.Sword;
+            Item helmet = Equipment.Helmet; 
+            Item sword = Equipment.Sword;
+            if (warrior.CanEquipItem(helmet))
+            {
+                warrior.Equipment.HeadArmor = Equipment.Helmet;
+            }
+
+            if (warrior.CanEquipItem(sword))
+            {
+                warrior.Equipment.Weapon = Equipment.Sword;
+            }
+
+            // Equip the warrior with a sword and helmet
 
             return warrior;
         }
