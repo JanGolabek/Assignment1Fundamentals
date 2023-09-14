@@ -74,13 +74,13 @@ namespace Assignment1.Warrior
             .Where(item => item.Slot == Slot.Head && CanEquipItem(item) && item.RequiredLevel <= Level)
             .OrderByDescending(item => item.ItemAttribute)
             .FirstOrDefault();
-            Equipment.HeadArmor = bestHeadArmor;
+            Equipment.HeadItem = bestHeadArmor;
 
             Item bestWeapon = equippableItems
                .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item) && item.RequiredLevel <= Level)
                .OrderByDescending(item => item.ItemAttribute)
                .FirstOrDefault();
-            Equipment.Weapon = bestWeapon;
+            Equipment.WeaponItem = bestWeapon;
 
             Item helmet = Equipment.Helmet;
             Item superHelmet = Equipment.SuperHelmet;
@@ -88,10 +88,10 @@ namespace Assignment1.Warrior
             Item sword = Equipment.Sword;
             Item boots = Equipment.Boots;
 
-            if (CanEquipItem(helmet))
-            {
-                Equipment.HeadArmor = helmet;
-            }
+            //if (CanEquipItem(helmet))
+            //{
+            //    Equipment.HeadItem = helmet;
+            //}
 
             //if (CanEquipItem(superSword) && (Equipment.Weapon == null || superSword.ItemAttribute > Equipment.Weapon.ItemAttribute))
             //{
@@ -103,10 +103,10 @@ namespace Assignment1.Warrior
             //    Equipment.Weapon = sword;
             //}
 
-            if (CanEquipItem(boots))
-            {
-                Equipment.LegsArmor = boots;
-            }
+            //if (CanEquipItem(boots))
+            //{
+            //    Equipment.LegsItem = boots;
+            //}
         }
 
         public Warrior CreateWarrior(string name)

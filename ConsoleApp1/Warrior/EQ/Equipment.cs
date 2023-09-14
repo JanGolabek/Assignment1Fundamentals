@@ -10,10 +10,10 @@ using System.Xml.Linq;
 
 internal class Equipment
 {
-    public Item HeadArmor { get; set; }
-    public Item BodyArmor { get; set;}
-    public Item LegsArmor { get; set;}
-    public Item Weapon { get; set;}
+    public Item HeadItem { get; set; }
+    public Item BodyItem { get; set;}
+    public Item LegsItem { get; set;}
+    public Item WeaponItem { get; set;}
 
     public static Item Helmet = new Item()
     {
@@ -23,7 +23,7 @@ internal class Equipment
         ItemAttribute = 3,
     };
 
-    public static Item SuperHelmet = new Item()
+    public static Item SuperHelmet { get; } = new Item()
     {
         Name = "Super helmet",
         Slot = Slot.Head,
@@ -58,14 +58,14 @@ internal class Equipment
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendLine("Equipped Items:");
-        if (HeadArmor != null)
-            sb.AppendLine($"Head Armor: {HeadArmor.Name}");
-        if (BodyArmor != null)
-            sb.AppendLine($"Body Armor: {BodyArmor.Name}");
-        if (LegsArmor != null)
-            sb.AppendLine($"Legs Armor: {LegsArmor.Name}");
-        if (Weapon != null)
-            sb.AppendLine($"Weapon: {Weapon.Name}");
+        if (HeadItem != null)
+            sb.AppendLine($"Head Armor: {HeadItem.Name}");
+        if (BodyItem != null)
+            sb.AppendLine($"Body Armor: {BodyItem.Name}");
+        if (LegsItem != null)
+            sb.AppendLine($"Legs Armor: {LegsItem.Name}");
+        if (WeaponItem != null)
+            sb.AppendLine($"Weapon: {WeaponItem.Name}");
 
         return sb.ToString();
     }
