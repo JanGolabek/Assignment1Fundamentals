@@ -30,6 +30,8 @@ namespace Assignment1.Warrior
         public void LevelUp()
         {
             Level++;
+            EquipItem(); 
+            // Try and equip the items with higher required level each time warrior levels up
 
             // Increase attributes based on character class
             switch (Class)
@@ -55,12 +57,28 @@ namespace Assignment1.Warrior
             return Level >= item.RequiredLevel;
         }
 
+        public void EquipItem()
+        {
+            Item helmet = Equipment.Helmet;
+            Item sword = Equipment.Sword;
+
+            if (CanEquipItem(helmet))
+            {
+                Equipment.HeadArmor = helmet;
+            }
+
+            if (CanEquipItem(sword))
+            {
+                Equipment.Weapon = sword;
+            }
+        }
+
         public Warrior CreateWarrior(string name)
         {
             // Generate a random character class
             Random random = new Random();
             // Assumes classes start from 1 to 4
-            CharacterClass characterClass = (CharacterClass)random.Next(1, 5); 
+            CharacterClass characterClass = (CharacterClass)random.Next(1, 5);
 
             HeroAttribute attributes;
             switch (characterClass)
@@ -92,21 +110,6 @@ namespace Assignment1.Warrior
                 Level = 1,
                 Damage = 1,
             };
-
-            Item helmet = Equipment.Helmet; 
-            Item sword = Equipment.Sword;
-            if (warrior.CanEquipItem(helmet))
-            {
-                warrior.Equipment.HeadArmor = Equipment.Helmet;
-            }
-
-            if (warrior.CanEquipItem(sword))
-            {
-                warrior.Equipment.Weapon = Equipment.Sword;
-            }
-
-            // Equip the warrior with a sword and helmet
-
             return warrior;
         }
 
