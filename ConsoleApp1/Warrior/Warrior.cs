@@ -59,17 +59,53 @@ namespace Assignment1.Warrior
 
         public void EquipItem()
         {
+            List<Item> equippableItems = new List<Item>
+        {
+            Equipment.Helmet,
+            Equipment.Sword,
+            Equipment.SuperSword,
+            Equipment.Boots,
+            Equipment.SuperHelmet
+        };
+
+            // Find the best equippable weapon based on the warrior's level
+
+            Item bestHeadArmor = equippableItems
+            .Where(item => item.Slot == Slot.Head && CanEquipItem(item) && item.RequiredLevel <= Level)
+            .OrderByDescending(item => item.ItemAttribute)
+            .FirstOrDefault();
+            Equipment.HeadArmor = bestHeadArmor;
+
+            Item bestWeapon = equippableItems
+               .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item) && item.RequiredLevel <= Level)
+               .OrderByDescending(item => item.ItemAttribute)
+               .FirstOrDefault();
+            Equipment.Weapon = bestWeapon;
+
             Item helmet = Equipment.Helmet;
+            Item superHelmet = Equipment.SuperHelmet;
+            Item superSword = Equipment.SuperSword;
             Item sword = Equipment.Sword;
+            Item boots = Equipment.Boots;
 
             if (CanEquipItem(helmet))
             {
                 Equipment.HeadArmor = helmet;
             }
 
-            if (CanEquipItem(sword))
+            //if (CanEquipItem(superSword) && (Equipment.Weapon == null || superSword.ItemAttribute > Equipment.Weapon.ItemAttribute))
+            //{
+            //    Equipment.Weapon = superSword;
+            //}
+
+            //if (CanEquipItem(sword))
+            //{
+            //    Equipment.Weapon = sword;
+            //}
+
+            if (CanEquipItem(boots))
             {
-                Equipment.Weapon = sword;
+                Equipment.LegsArmor = boots;
             }
         }
 
