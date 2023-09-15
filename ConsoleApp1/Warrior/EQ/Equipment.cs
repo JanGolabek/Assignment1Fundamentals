@@ -11,9 +11,9 @@ using Assignment1.Warrior.EQ.ItemTypes;
 
 internal class Equipment
 {
-    public WeaponItem HeadItem { get; set; }
-    public WeaponItem BodyItem { get; set;}
-    public WeaponItem LegsItem { get; set;}
+    public ArmorItem HeadItem { get; set; }
+    public ArmorItem BodyItem { get; set;}
+    public ArmorItem LegsItem { get; set;}
     public WeaponItem WeaponItem { get; set;}
 
     public static WeaponItem SuperSword { get; } = new WeaponItem()
@@ -34,6 +34,26 @@ internal class Equipment
         Slot = Slot.Weapon,
         RequiredLevel = 1,
         WeaponDamage = 2,
+    };
+
+    public static ArmorItem Plate { get; } = new ArmorItem()
+    {
+        Name = "Plate",
+        WarriorClass = new List<CharacterClass>
+        { CharacterClass.Barbarian },
+        Slot = Slot.Body,
+        RequiredLevel = 1,
+        ArmorAttribute = 2,
+    };
+
+    public static ArmorItem GoldPlate { get; } = new ArmorItem()
+    {
+        Name = "Gold plate",
+        WarriorClass = new List<CharacterClass>
+        { CharacterClass.Barbarian },
+        Slot = Slot.Body,
+        RequiredLevel = 5,
+        ArmorAttribute = 6,
     };
 
     public override string ToString()

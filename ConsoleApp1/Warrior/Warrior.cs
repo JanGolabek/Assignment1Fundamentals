@@ -52,7 +52,13 @@ namespace Assignment1.Warrior
             }
         }
 
-        public bool CanEquipItem(WeaponItem item)
+        public bool CanEquipWeapon(WeaponItem item)
+        {
+            // Check if the warrior's level is greater than or equal to the item's RequiredLevel
+            return Level >= item.RequiredLevel && item.WarriorClass.Contains(Class);
+        }
+
+        public bool CanEquipArmor(ArmorItem item)
         {
             // Check if the warrior's level is greater than or equal to the item's RequiredLevel
             return Level >= item.RequiredLevel && item.WarriorClass.Contains(Class);
@@ -61,22 +67,33 @@ namespace Assignment1.Warrior
         public void EquipItem()
         {
             List<WeaponItem> equippableWeapons = new List<WeaponItem>
+
         {
             Equipment.Sword,
             Equipment.SuperSword,
+           
+        };
+
+            List<ArmorItem> equippableArmor = new List<ArmorItem>
+        {
+            Equipment.Plate,
+            Equipment.GoldPlate
+            // Add more armor pieces as needed
         };
 
             // Find the best equippable weapon based on the warrior's level
 
             WeaponItem bestWeapon = equippableWeapons
-               .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item) && item.RequiredLevel <= Level)
+               .Where(item => item.Slot == Slot.Weapon && CanEquipWeapon(item) && item.RequiredLevel <= Level)
                .OrderByDescending(item => item.WeaponDamage)
                .FirstOrDefault();
             Equipment.WeaponItem = bestWeapon;
 
-           
-            WeaponItem superSword = Equipment.SuperSword;
-            WeaponItem sword = Equipment.Sword;
+           ArmorItem bestBodyItem = equippableArmor
+               .Where(item => item.Slot == Slot.Body && CanEquipArmor(item) && item.RequiredLevel <= Level)
+               .OrderByDescending(item => item.ArmorAttribute)
+               .FirstOrDefault();
+            Equipment.BodyItem = bestBodyItem;
 
             //if (CanEquipItem(helmet))
             //{
