@@ -7,53 +7,35 @@ using System.Threading.Tasks;
 using Assignment1.Warrior.EQ;
 using Assignment1.Warrior;
 using System.Xml.Linq;
+using Assignment1.Warrior.EQ.ItemTypes;
 
 internal class Equipment
 {
-    public Item HeadItem { get; set; }
-    public Item BodyItem { get; set;}
-    public Item LegsItem { get; set;}
-    public Item WeaponItem { get; set;}
+    public WeaponItem HeadItem { get; set; }
+    public WeaponItem BodyItem { get; set;}
+    public WeaponItem LegsItem { get; set;}
+    public WeaponItem WeaponItem { get; set;}
 
-    public static Item Helmet = new Item()
-    {
-        Name = "Helmet",
-        Slot = Slot.Head,
-        RequiredLevel = 2,
-        ItemAttribute = 3,
-    };
-
-    public static Item SuperHelmet { get; } = new Item()
-    {
-        Name = "Super helmet",
-        Slot = Slot.Head,
-        RequiredLevel = 5,
-        ItemAttribute = 5,
-    };
-
-    public static Item SuperSword { get; } = new Item()
+    public static WeaponItem SuperSword { get; } = new WeaponItem()
     {
         Name = "Super Sword",
+        WarriorClass = new List<CharacterClass>
+        { CharacterClass.Swashbuckler, CharacterClass.Barbarian },
         Slot = Slot.Weapon,
         RequiredLevel = 4,
-        ItemAttribute = 20,
+        WeaponDamage = 20,
     };
 
-    public static Item Sword { get; } = new Item()
+    public static WeaponItem Sword { get; } = new WeaponItem()
     {
         Name = "Sword",
+        WarriorClass = new List<CharacterClass>
+        { CharacterClass.Swashbuckler, CharacterClass.Barbarian },
         Slot = Slot.Weapon,
         RequiredLevel = 1,
-        ItemAttribute = 2,
+        WeaponDamage = 2,
     };
 
-    public static Item Boots { get; } = new Item()
-    {
-        Name = "Boots",
-        Slot = Slot.Legs,
-        RequiredLevel = 4,
-        ItemAttribute = 20,
-    };
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();

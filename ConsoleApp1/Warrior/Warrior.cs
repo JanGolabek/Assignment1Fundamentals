@@ -1,4 +1,5 @@
 ﻿using Assignment1.Warrior.EQ;
+using Assignment1.Warrior.EQ.ItemTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,42 +52,31 @@ namespace Assignment1.Warrior
             }
         }
 
-        public bool CanEquipItem(Item item)
+        public bool CanEquipItem(WeaponItem item)
         {
             // Check if the warrior's level is greater than or equal to the item's RequiredLevel
-            return Level >= item.RequiredLevel;
+            return Level >= item.RequiredLevel && item.WarriorClass.Contains(Class);
         }
 
         public void EquipItem()
         {
-            List<Item> equippableItems = new List<Item>
+            List<WeaponItem> equippableWeapons = new List<WeaponItem>
         {
-            Equipment.Helmet,
             Equipment.Sword,
             Equipment.SuperSword,
-            Equipment.Boots,
-            Equipment.SuperHelmet
         };
 
             // Find the best equippable weapon based on the warrior's level
 
-            Item bestHeadArmor = equippableItems
-            .Where(item => item.Slot == Slot.Head && CanEquipItem(item) && item.RequiredLevel <= Level)
-            .OrderByDescending(item => item.ItemAttribute)
-            .FirstOrDefault();
-            Equipment.HeadItem = bestHeadArmor;
-
-            Item bestWeapon = equippableItems
+            WeaponItem bestWeapon = equippableWeapons
                .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item) && item.RequiredLevel <= Level)
-               .OrderByDescending(item => item.ItemAttribute)
+               .OrderByDescending(item => item.WeaponDamage)
                .FirstOrDefault();
             Equipment.WeaponItem = bestWeapon;
 
-            Item helmet = Equipment.Helmet;
-            Item superHelmet = Equipment.SuperHelmet;
-            Item superSword = Equipment.SuperSword;
-            Item sword = Equipment.Sword;
-            Item boots = Equipment.Boots;
+           
+            WeaponItem superSword = Equipment.SuperSword;
+            WeaponItem sword = Equipment.Sword;
 
             //if (CanEquipItem(helmet))
             //{
@@ -112,9 +102,10 @@ namespace Assignment1.Warrior
         public Warrior CreateWarrior(string name)
         {
             // Generate a random character class
-            Random random = new Random();
+            // Random random = new Random();
             // Assumes classes start from 1 to 4
-            CharacterClass characterClass = (CharacterClass)random.Next(1, 5);
+            CharacterClass characterClass = // (CharacterClass)random.Next(1, 5);
+            CharacterClass.Barbarian;
 
             HeroAttribute attributes;
             switch (characterClass)
