@@ -1,5 +1,6 @@
 ﻿using Assignment1.Warrior.EQ;
-using Assignment1.Warrior.EQ.ItemTypes;
+using Assignment1.Warrior.EQ.Items;
+using Assignment1.Warrior.EQ.Items.ItemTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,13 +53,10 @@ namespace Assignment1.Warrior
             }
         }
 
-        public bool CanEquipWeapon(WeaponItem item)
-        {
-            // Check if the warrior's level is greater than or equal to the item's RequiredLevel
-            return Level >= item.RequiredLevel && item.WarriorClass.Contains(Class);
-        }
-
-        public bool CanEquipArmor(ArmorItem item)
+        // Common base class Item, both WeaponItem and
+        // ArmorItem inherit from it. This allows the code to use the
+        // generic CanEquipItem method for both weapon and armor items:
+        public bool CanEquipItem<T>(T item) where T : Item
         {
             // Check if the warrior's level is greater than or equal to the item's RequiredLevel
             return Level >= item.RequiredLevel && item.WarriorClass.Contains(Class);
@@ -66,54 +64,43 @@ namespace Assignment1.Warrior
 
         public void EquipItem()
         {
-            List<WeaponItem> equippableWeapons = new List<WeaponItem>
 
-        {
-            Equipment.Sword,
-            Equipment.SuperSword,
-           
-        };
-
-            List<ArmorItem> equippableArmor = new List<ArmorItem>
+            List<Item> equippableItems = new List<Item>
         {
             Equipment.Plate,
-            Equipment.GoldPlate
-            // Add more armor pieces as needed
+            Equipment.GoldPlate,
+            Equipment.Boots,
+            Equipment.AirForceOne,
+            Equipment.Sword,
+            Equipment.SuperSword,
         };
 
-            // Find the best equippable weapon based on the warrior's level
+            // Find the best equippable weapon and armor based on the warrior's level
 
-            WeaponItem bestWeapon = equippableWeapons
-               .Where(item => item.Slot == Slot.Weapon && CanEquipWeapon(item) && item.RequiredLevel <= Level)
-               .OrderByDescending(item => item.WeaponDamage)
+            Item bestWeapon = equippableItems
+               .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item))
+               .OrderByDescending(item => (item as WeaponItem)?.WeaponDamage ?? 0)
                .FirstOrDefault();
             Equipment.WeaponItem = bestWeapon;
+            Equipment.HeadItem = FindBestArmor(Slot.Head, equippableItems);
+            Equipment.BodyItem = FindBestArmor(Slot.Body, equippableItems);
+            Equipment.LegsItem = FindBestArmor(Slot.Legs, equippableItems);
 
-           ArmorItem bestBodyItem = equippableArmor
-               .Where(item => item.Slot == Slot.Body && CanEquipArmor(item) && item.RequiredLevel <= Level)
-               .OrderByDescending(item => item.ArmorAttribute)
-               .FirstOrDefault();
-            Equipment.BodyItem = bestBodyItem;
+        }
 
-            //if (CanEquipItem(helmet))
-            //{
-            //    Equipment.HeadItem = helmet;
-            //}
+        // Refactored the FindBestArmor method at the class level
 
-            //if (CanEquipItem(superSword) && (Equipment.Weapon == null || superSword.ItemAttribute > Equipment.Weapon.ItemAttribute))
-            //{
-            //    Equipment.Weapon = superSword;
-            //}
-
-            //if (CanEquipItem(sword))
-            //{
-            //    Equipment.Weapon = sword;
-            //}
-
-            //if (CanEquipItem(boots))
-            //{
-            //    Equipment.LegsItem = boots;
-            //}
+        // Private Access Modifier: The private access modifier is used to restrict
+        // the visibility of the method to within the Warrior class. This means that
+        // the method can only be called from within the Warrior class itself and
+        // not from outside classes or methods. Since this method is intended to
+        // be used internally within the Warrior class, it makes sense to keep it private.
+        private ArmorItem FindBestArmor(Slot slot, List<Item> equippableItems)
+        {
+            return equippableItems
+        .Where(item => item is ArmorItem armorItem && armorItem.Slot == slot && CanEquipItem(armorItem))
+        .OrderByDescending(item => (item as ArmorItem)?.ArmorAttribute ?? 0)
+        .FirstOrDefault() as ArmorItem;
         }
 
         public Warrior CreateWarrior(string name)
@@ -121,8 +108,8 @@ namespace Assignment1.Warrior
             // Generate a random character class
             // Random random = new Random();
             // Assumes classes start from 1 to 4
-            CharacterClass characterClass = // (CharacterClass)random.Next(1, 5);
-            CharacterClass.Barbarian;
+            // CharacterClass characterClass = // (CharacterClass)random.Next(1, 5);
+            CharacterClass characterClass = CharacterClass.Barbarian;
 
             HeroAttribute attributes;
             switch (characterClass)

@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1.Warrior.EQ.ItemTypes
+namespace Assignment1.Warrior.EQ.Items
 {
-    internal class WeaponItem
+
+    // Common base class Item
+    internal class Item
     {
         public string Name { get; set; }
         public List<CharacterClass> WarriorClass { get; set; }
         public Slot Slot { get; set; }
         public int RequiredLevel { get; set; }
-        public int WeaponDamage { get; set; }
     }
-
-
 }
