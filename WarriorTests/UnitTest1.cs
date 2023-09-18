@@ -2,6 +2,7 @@ using Assignment1.Warriors;
 using Assignment1.Warriors.EQ.Items.ItemTypes;
 using Assignment1.Warriors.EQ;
 using System.Threading;
+using Assignment1.Warriors.EQ.Items;
 
 namespace WarriorTests
 {
@@ -111,6 +112,37 @@ namespace WarriorTests
             Assert.Equal(expectedSlot, armor.Slot);
             Assert.Equal(expectedArmorType, armor.ArmorType);
             Assert.Equal(expectedArmorAttribute, armor.ArmorAttribute);
+        }
+
+        [Fact]
+        public void EquipWeapon_ValidWeapon_EquipsWeapon()
+        {
+            // Arrange
+            Warrior warrior = new Warrior()
+            {
+                Class = CharacterClass.Barbarian // Set the character class to Barbarian
+            };
+
+            warrior.Equipment = new Equipment(); // Initialize Equipment
+            List<Item> equippableItems = new List<Item>
+        {
+            new WeaponItem
+            {
+                Name = "Sword",
+                Slot = Slot.Weapon,
+                RequiredLevel = 1,
+                WeaponType = WeaponType.Sword, 
+                WeaponDamage = 10,
+            },
+
+        };
+
+            // Act
+            warrior.EquipItem(equippableItems);
+
+            // Assert
+            Assert.NotNull(warrior.Equipment.WeaponItem);
+            Assert.Equal("Sword", warrior.Equipment.WeaponItem.Name);
         }
 
     }

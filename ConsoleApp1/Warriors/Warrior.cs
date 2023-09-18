@@ -35,11 +35,17 @@ namespace Assignment1.Warriors
             Attributes = totalAttributes;
         }
 
+        public Warrior()
+        {
+            // Initialize the Equipment property
+            Equipment = new Equipment();
+        }
 
         public void LevelUp()
         {
             Level++;
-            EquipItem();
+
+            // EquipItem();
             CalculateTotalDamage();
 
             // Try and equip the items with higher required level each time warrior levels up
@@ -131,17 +137,11 @@ namespace Assignment1.Warriors
         }
 
 
-        public void EquipItem()
+        public void EquipItem(List<Item> equippableItems)
         {
-
-            List<Item> equippableItems = new List<Item>
-        {
-            
-        };
 
             // Find the best equippable weapon and armor based on the warrior's level
 
-            
             Equipment.WeaponItem = FindBestWeapon(equippableItems);
             Equipment.HeadItem = FindBestArmor(Slot.Head, equippableItems);
             Equipment.BodyItem = FindBestArmor(Slot.Body, equippableItems);
@@ -185,7 +185,6 @@ namespace Assignment1.Warriors
         public Warrior CreateWarrior(string name, CharacterClass characterClass)
         {
             
-
             HeroAttribute attributes;
             switch (characterClass)
             {
