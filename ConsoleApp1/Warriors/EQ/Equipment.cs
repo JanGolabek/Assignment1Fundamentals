@@ -35,65 +35,65 @@ public class Equipment
     public ArmorItem LegsItem { get; set; }
     public WeaponItem WeaponItem { get; set; }
 
-    public static WeaponItem SuperSword { get; } = new WeaponItem()
-    {
-        Name = "Super Sword",
-        WarriorClass = new List<CharacterClass>
-        { CharacterClass.Swashbuckler, CharacterClass.Barbarian },
-        Slot = Slot.Weapon,
-        RequiredLevel = 4,
-        WeaponDamage = 20,
-    };
+    //public static WeaponItem SuperSword { get; } = new WeaponItem()
+    //{
+    //    Name = "Super Sword",
+    //    WarriorClass = new List<CharacterClass>
+    //    { CharacterClass.Swashbuckler, CharacterClass.Barbarian },
+    //    Slot = Slot.Weapon,
+    //    RequiredLevel = 4,
+    //    WeaponDamage = 20,
+    //};
 
-    public static WeaponItem Sword { get; } = new WeaponItem()
-    {
-        Name = "Sword",
-        WarriorClass = new List<CharacterClass>
-        { CharacterClass.Swashbuckler, CharacterClass.Barbarian },
-        Slot = Slot.Weapon,
-        RequiredLevel = 1,
-        WeaponDamage = 2,
-    };
+    //public static WeaponItem Sword { get; } = new WeaponItem()
+    //{
+    //    Name = "Sword",
+    //    WarriorClass = new List<CharacterClass>
+    //    { CharacterClass.Swashbuckler, CharacterClass.Barbarian },
+    //    Slot = Slot.Weapon,
+    //    RequiredLevel = 1,
+    //    WeaponDamage = 2,
+    //};
 
-    public static ArmorItem Plate { get; } = new ArmorItem()
-    {
-        Name = "Plate",
-        WarriorClass = new List<CharacterClass>
-        { CharacterClass.Barbarian },
-        Slot = Slot.Body,
-        RequiredLevel = 1,
-        ArmorAttribute = new HeroAttribute(120, 120, 120)
-    };
+    //public static ArmorItem Plate { get; } = new ArmorItem()
+    //{
+    //    Name = "Plate",
+    //    WarriorClass = new List<CharacterClass>
+    //    { CharacterClass.Barbarian },
+    //    Slot = Slot.Body,
+    //    RequiredLevel = 1,
+    //    ArmorAttribute = new HeroAttribute(120, 120, 120)
+    //};
 
-    public static ArmorItem GoldPlate { get; } = new ArmorItem()
-    {
-        Name = "Gold plate",
-        WarriorClass = new List<CharacterClass>
-        { CharacterClass.Barbarian },
-        Slot = Slot.Body,
-        RequiredLevel = 5,
-        ArmorAttribute = new HeroAttribute(5, 5, 5)
-    };
+    //public static ArmorItem GoldPlate { get; } = new ArmorItem()
+    //{
+    //    Name = "Gold plate",
+    //    WarriorClass = new List<CharacterClass>
+    //    { CharacterClass.Barbarian },
+    //    Slot = Slot.Body,
+    //    RequiredLevel = 5,
+    //    ArmorAttribute = new HeroAttribute(5, 5, 5)
+    //};
 
-    public static ArmorItem Boots { get; } = new ArmorItem()
-    {
-        Name = "Boots",
-        WarriorClass = new List<CharacterClass>
-        { CharacterClass.Barbarian },
-        Slot = Slot.Legs,
-        RequiredLevel = 2,
-        ArmorAttribute = new HeroAttribute(1, 1, 1)
-    };
+    //public static ArmorItem Boots { get; } = new ArmorItem()
+    //{
+    //    Name = "Boots",
+    //    WarriorClass = new List<CharacterClass>
+    //    { CharacterClass.Barbarian },
+    //    Slot = Slot.Legs,
+    //    RequiredLevel = 2,
+    //    ArmorAttribute = new HeroAttribute(1, 1, 1)
+    //};
 
-    public static ArmorItem AirForceOne { get; } = new ArmorItem()
-    {
-        Name = "Air force one",
-        WarriorClass = new List<CharacterClass>
-        { CharacterClass.Wizard, CharacterClass.Barbarian},
-        Slot = Slot.Legs,
-        RequiredLevel = 3,
-        ArmorAttribute = new HeroAttribute(10, 10, 10)
-    };
+    //public static ArmorItem AirForceOne { get; } = new ArmorItem()
+    //{
+    //    Name = "Air force one",
+    //    WarriorClass = new List<CharacterClass>
+    //    { CharacterClass.Wizard, CharacterClass.Barbarian},
+    //    Slot = Slot.Legs,
+    //    RequiredLevel = 3,
+    //    ArmorAttribute = new HeroAttribute(10, 10, 10)
+    //};
 
     public override string ToString()
     {

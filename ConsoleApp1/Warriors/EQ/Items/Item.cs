@@ -11,7 +11,6 @@ namespace Assignment1.Warriors.EQ.Items
     public class Item
     {
         public string Name { get; set; }
-        public List<CharacterClass> WarriorClass { get; set; }
         public Slot Slot { get; set; }
         public int RequiredLevel { get; set; }
     }

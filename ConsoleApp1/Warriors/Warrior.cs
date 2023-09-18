@@ -3,6 +3,7 @@ using Assignment1.Warriors.EQ.Items;
 using Assignment1.Warriors.EQ.Items.ItemTypes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,31 +82,66 @@ namespace Assignment1.Warriors
         // Common base class Item, both WeaponItem and
         // ArmorItem inherit from it. This allows the code to use the
         // generic CanEquipItem method for both weapon and armor items:
-        public bool CanEquipItem<T>(T item) where T : Item
+        public bool CanEquipWeapon(WeaponItem weaponItem)
         {
             // Check if the warrior's level is greater than or equal to the item's RequiredLevel
-            return Level >= item.RequiredLevel && item.WarriorClass.Contains(Class);
+            return Level >= weaponItem.RequiredLevel && CanEquipWeaponType(weaponItem.WeaponType);
         }
+
+        public bool CanEquipArmor(ArmorItem armorItem)
+        {
+            // Check if the warrior's level is greater than or equal to the item's RequiredLevel
+            return Level >= armorItem.RequiredLevel && CanEquipArmorType(armorItem.ArmorType);
+        }
+
+        public bool CanEquipWeaponType(WeaponType weaponType)
+        {
+            // Define which classes can equip which weapon types
+            switch (Class)
+            {
+                case CharacterClass.Wizard:
+                    return weaponType == WeaponType.Staff || weaponType == WeaponType.Wand;
+                case CharacterClass.Archer:
+                    return weaponType == WeaponType.Bow;
+                case CharacterClass.Swashbuckler:
+                    return weaponType == WeaponType.Dagger || weaponType == WeaponType.Sword;
+                case CharacterClass.Barbarian:
+                    return weaponType == WeaponType.Hatchet || weaponType == WeaponType.Mace || weaponType == WeaponType.Sword;
+                default:
+                    return false; // Invalid class
+            }
+        }
+
+        public bool CanEquipArmorType(ArmorType armorType)
+        {
+            // Define which classes can equip which weapon types
+            switch (Class)
+            {
+                case CharacterClass.Wizard:
+                    return armorType == ArmorType.Cloth;
+                case CharacterClass.Archer:
+                    return armorType == ArmorType.Leather || armorType == ArmorType.Mail;
+                case CharacterClass.Swashbuckler:
+                    return armorType == ArmorType.Leather || armorType == ArmorType.Mail;
+                case CharacterClass.Barbarian:
+                    return armorType == ArmorType.Mail || armorType == ArmorType.Plate;
+                default:
+                    return false; // Invalid class
+            }
+        }
+
 
         public void EquipItem()
         {
 
             List<Item> equippableItems = new List<Item>
         {
-            Equipment.Plate,
-            Equipment.GoldPlate,
-            Equipment.Boots,
-            Equipment.AirForceOne,
-            Equipment.Sword,
-            Equipment.SuperSword,
+            
         };
 
             // Find the best equippable weapon and armor based on the warrior's level
 
-            Item bestWeapon = equippableItems
-               .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item))
-               .OrderByDescending(item => (item as WeaponItem)?.WeaponDamage ?? 0)
-               .FirstOrDefault();
+            
             Equipment.WeaponItem = FindBestWeapon(equippableItems);
             Equipment.HeadItem = FindBestArmor(Slot.Head, equippableItems);
             Equipment.BodyItem = FindBestArmor(Slot.Body, equippableItems);
@@ -129,7 +165,7 @@ namespace Assignment1.Warriors
         private ArmorItem FindBestArmor(Slot slot, List<Item> equippableItems)
         {
             return equippableItems
-                .Where(item => item is ArmorItem armorItem && armorItem.Slot == slot && CanEquipItem(armorItem))
+                .Where(item => item is ArmorItem armorItem && armorItem.Slot == slot && CanEquipArmor(armorItem))
                 .OrderByDescending(item => (item as ArmorItem)?.ArmorAttribute.Strength +
                                          (item as ArmorItem)?.ArmorAttribute.Dexterity +
                                          (item as ArmorItem)?.ArmorAttribute.Intelligence)
@@ -140,19 +176,15 @@ namespace Assignment1.Warriors
         private WeaponItem FindBestWeapon(List<Item> equippableItems)
         {
             return equippableItems
-                .Where(item => item is WeaponItem weaponItem && item.Slot == Slot.Weapon && CanEquipItem(weaponItem))
+                .Where(item => item is WeaponItem weaponItem && item.Slot == Slot.Weapon && CanEquipWeapon(weaponItem))
                 .OrderByDescending(item => (item as WeaponItem)?.WeaponDamage ?? 0)
                 .FirstOrDefault() as WeaponItem;
         }
 
 
-        public Warrior CreateWarrior(string name)
+        public Warrior CreateWarrior(string name, CharacterClass characterClass)
         {
-            // Generate a random character class
-            // Random random = new Random();
-            // Assumes classes start from 1 to 4
-            // CharacterClass characterClass = // (CharacterClass)random.Next(1, 5);
-            CharacterClass characterClass = CharacterClass.Barbarian;
+            
 
             HeroAttribute attributes;
             switch (characterClass)
