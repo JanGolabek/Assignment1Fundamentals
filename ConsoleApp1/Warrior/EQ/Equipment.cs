@@ -33,7 +33,7 @@ internal class Equipment
     public ArmorItem HeadItem { get; set; }
     public ArmorItem BodyItem { get; set; }
     public ArmorItem LegsItem { get; set; }
-    public Item WeaponItem { get; set; }
+    public WeaponItem WeaponItem { get; set; }
 
     public static WeaponItem SuperSword { get; } = new WeaponItem()
     {

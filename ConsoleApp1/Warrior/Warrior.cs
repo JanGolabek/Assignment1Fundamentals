@@ -39,6 +39,7 @@ namespace Assignment1.Warrior
         {
             Level++;
             EquipItem();
+            CalculateTotalDamage();
 
             // Try and equip the items with higher required level each time warrior levels up
 
@@ -90,7 +91,7 @@ namespace Assignment1.Warrior
                .Where(item => item.Slot == Slot.Weapon && CanEquipItem(item))
                .OrderByDescending(item => (item as WeaponItem)?.WeaponDamage ?? 0)
                .FirstOrDefault();
-            Equipment.WeaponItem = bestWeapon;
+            Equipment.WeaponItem = FindBestWeapon(equippableItems);
             Equipment.HeadItem = FindBestArmor(Slot.Head, equippableItems);
             Equipment.BodyItem = FindBestArmor(Slot.Body, equippableItems);
             Equipment.LegsItem = FindBestArmor(Slot.Legs, equippableItems);
@@ -115,6 +116,15 @@ namespace Assignment1.Warrior
         .OrderByDescending(item => (item as ArmorItem)?.ArmorAttribute ?? 0)
         .FirstOrDefault() as ArmorItem;
         }
+
+        private WeaponItem FindBestWeapon(List<Item> equippableItems)
+        {
+            return equippableItems
+                .Where(item => item is WeaponItem weaponItem && item.Slot == Slot.Weapon && CanEquipItem(weaponItem))
+                .OrderByDescending(item => (item as WeaponItem)?.WeaponDamage ?? 0)
+                .FirstOrDefault() as WeaponItem;
+        }
+
 
         public Warrior CreateWarrior(string name)
         {
@@ -155,7 +165,6 @@ namespace Assignment1.Warrior
                 Level = 0,
                 Damage = 1,
             };
-
             return warrior;
         }
         public HeroAttribute CalculateTotalAttributes()
@@ -198,6 +207,42 @@ namespace Assignment1.Warrior
             return totalAttributes;
         }
 
+        public void CalculateTotalDamage()
+        {
+            // Default weapon damage if no weapon is equipped
+            int defaultWeaponDamage = 1;
+
+            // Find the equipped weapon or set to null if no weapon is equipped
+            WeaponItem equippedWeapon = Equipment.WeaponItem;
+
+            // Calculate damaging attribute based on character class
+            int damagingAttribute = 0;
+            switch (Class)
+            {
+                case CharacterClass.Wizard:
+                    damagingAttribute = Attributes.Intelligence;
+                    break;
+                case CharacterClass.Archer:
+                case CharacterClass.Swashbuckler:
+                    damagingAttribute = Attributes.Dexterity;
+                    break;
+                case CharacterClass.Barbarian:
+                    damagingAttribute = Attributes.Strength;
+                    break;
+            }
+
+            // Calculate total damage based on equipped weapon and damaging attribute
+            int totalDamage = equippedWeapon != null
+                ? (int)(equippedWeapon.WeaponDamage * (1 + damagingAttribute / 100.0))
+                : defaultWeaponDamage;
+
+            // Update the warrior's damage property
+            Damage = totalDamage;
+        }
+
     }
 
+
 }
+
+
