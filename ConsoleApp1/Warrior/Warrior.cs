@@ -112,10 +112,13 @@ namespace Assignment1.Warrior
         private ArmorItem FindBestArmor(Slot slot, List<Item> equippableItems)
         {
             return equippableItems
-        .Where(item => item is ArmorItem armorItem && armorItem.Slot == slot && CanEquipItem(armorItem))
-        .OrderByDescending(item => (item as ArmorItem)?.ArmorAttribute ?? 0)
-        .FirstOrDefault() as ArmorItem;
+                .Where(item => item is ArmorItem armorItem && armorItem.Slot == slot && CanEquipItem(armorItem))
+                .OrderByDescending(item => (item as ArmorItem)?.ArmorAttribute.Strength +
+                                         (item as ArmorItem)?.ArmorAttribute.Dexterity +
+                                         (item as ArmorItem)?.ArmorAttribute.Intelligence)
+                .FirstOrDefault() as ArmorItem;
         }
+
 
         private WeaponItem FindBestWeapon(List<Item> equippableItems)
         {
@@ -181,19 +184,32 @@ namespace Assignment1.Warrior
 
             if (Equipment != null)
             {
-                if (Equipment.HeadItem != null)
+                // Access the armor items in each slot directly
+                ArmorItem headArmor = Equipment.HeadItem;
+                ArmorItem bodyArmor = Equipment.BodyItem;
+                ArmorItem legsArmor = Equipment.LegsItem;
+
+                // Check and add the armor attribute values for each equipped armor item
+                if (headArmor != null)
                 {
-                    equipmentStrength += Equipment.HeadItem.ArmorAttribute;
+                    equipmentStrength += headArmor.ArmorAttribute.Strength;
+                    equipmentDexterity += headArmor.ArmorAttribute.Dexterity;
+                    equipmentIntelligence += headArmor.ArmorAttribute.Intelligence;
                 }
-                if (Equipment.BodyItem != null)
+
+                if (bodyArmor != null)
                 {
-                    equipmentDexterity += Equipment.BodyItem.ArmorAttribute;
+                    equipmentStrength += bodyArmor.ArmorAttribute.Strength;
+                    equipmentDexterity += bodyArmor.ArmorAttribute.Dexterity;
+                    equipmentIntelligence += bodyArmor.ArmorAttribute.Intelligence;
                 }
-                if (Equipment.LegsItem != null)
+
+                if (legsArmor != null)
                 {
-                    equipmentIntelligence += Equipment.LegsItem.ArmorAttribute;
+                    equipmentStrength += legsArmor.ArmorAttribute.Strength;
+                    equipmentDexterity += legsArmor.ArmorAttribute.Dexterity;
+                    equipmentIntelligence += legsArmor.ArmorAttribute.Intelligence;
                 }
-                // Add attributes from other equipment slots as needed
             }
 
             // Calculate the total attributes as a HeroAttribute object
@@ -206,6 +222,7 @@ namespace Assignment1.Warrior
 
             return totalAttributes;
         }
+
 
         public void CalculateTotalDamage()
         {

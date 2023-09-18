@@ -62,7 +62,7 @@ internal class Equipment
         { CharacterClass.Barbarian },
         Slot = Slot.Body,
         RequiredLevel = 1,
-        ArmorAttribute = 2,
+        ArmorAttribute = new HeroAttribute(120, 120, 120)
     };
 
     public static ArmorItem GoldPlate { get; } = new ArmorItem()
@@ -72,7 +72,7 @@ internal class Equipment
         { CharacterClass.Barbarian },
         Slot = Slot.Body,
         RequiredLevel = 5,
-        ArmorAttribute = 6,
+        ArmorAttribute = new HeroAttribute(5, 5, 5)
     };
 
     public static ArmorItem Boots { get; } = new ArmorItem()
@@ -82,7 +82,7 @@ internal class Equipment
         { CharacterClass.Barbarian },
         Slot = Slot.Legs,
         RequiredLevel = 2,
-        ArmorAttribute = 60,
+        ArmorAttribute = new HeroAttribute(1, 1, 1)
     };
 
     public static ArmorItem AirForceOne { get; } = new ArmorItem()
@@ -92,7 +92,7 @@ internal class Equipment
         { CharacterClass.Wizard, CharacterClass.Barbarian},
         Slot = Slot.Legs,
         RequiredLevel = 3,
-        ArmorAttribute = 7,
+        ArmorAttribute = new HeroAttribute(10, 10, 10)
     };
 
     public override string ToString()

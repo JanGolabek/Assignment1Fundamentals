@@ -12,6 +12,6 @@ namespace Assignment1.Warrior.EQ.Items.ItemTypes
     // variable for the armor attribute
     internal class ArmorItem : Item
     {
-        public int ArmorAttribute { get; set; }
+        public HeroAttribute ArmorAttribute { get; set; }
     }
 }
