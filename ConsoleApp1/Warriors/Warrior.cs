@@ -1,6 +1,6 @@
-﻿using Assignment1.Warrior.EQ;
-using Assignment1.Warrior.EQ.Items;
-using Assignment1.Warrior.EQ.Items.ItemTypes;
+﻿using Assignment1.Warriors.EQ;
+using Assignment1.Warriors.EQ.Items;
+using Assignment1.Warriors.EQ.Items.ItemTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Assignment1.Warrior
+namespace Assignment1.Warriors
 {
-    enum CharacterClass
+   public enum CharacterClass
     {
         None,
         Wizard,
@@ -18,7 +18,7 @@ namespace Assignment1.Warrior
         Swashbuckler,
         Barbarian
     }
-    class Warrior
+    public class Warrior
     {
         public string Name { get; set; }
         public CharacterClass Class { get; set; }
@@ -63,6 +63,21 @@ namespace Assignment1.Warrior
             SetAttributes(totalAttributes);
         }
 
+        public class InvalidWeaponException : Exception
+        {
+            public InvalidWeaponException(string message) : base(message)
+            {
+            }
+        }
+
+        public class InvalidArmorException : Exception
+        {
+            public InvalidArmorException(string message) : base(message)
+            {
+            }
+        }
+
+
         // Common base class Item, both WeaponItem and
         // ArmorItem inherit from it. This allows the code to use the
         // generic CanEquipItem method for both weapon and armor items:
@@ -101,6 +116,8 @@ namespace Assignment1.Warrior
             SetAttributes(totalAttributes);
 
         }
+
+
 
         // Refactored the FindBestArmor method at the class level
 

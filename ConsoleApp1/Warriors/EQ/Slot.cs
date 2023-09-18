@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1.Warrior.EQ
+namespace Assignment1.Warriors.EQ
 {
-    enum Slot
+    public enum Slot
     {
         Head,
         Body,

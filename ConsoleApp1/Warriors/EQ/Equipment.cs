@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Assignment1.Warrior.EQ;
-using Assignment1.Warrior;
+using Assignment1.Warriors.EQ;
+using Assignment1.Warriors;
 using System.Xml.Linq;
-using Assignment1.Warrior.EQ.Items.ItemTypes;
-using Assignment1.Warrior.EQ.Items;
+using Assignment1.Warriors.EQ.Items.ItemTypes;
+using Assignment1.Warriors.EQ.Items;
 
 // Here's why the change from Armor and WeaponItem to Item makes sense:
 
@@ -28,7 +28,7 @@ using Assignment1.Warrior.EQ.Items;
 // can easily extend your Equipment class without modifying its structure. We
 // can simply add new properties of type Item for each new item type,
 // whether it's armor, weapons, or other items.
-internal class Equipment
+public class Equipment
 {
     public ArmorItem HeadItem { get; set; }
     public ArmorItem BodyItem { get; set; }

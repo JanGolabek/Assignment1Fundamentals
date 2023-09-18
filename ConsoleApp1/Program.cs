@@ -1,4 +1,4 @@
-﻿using Assignment1.Warrior;
+﻿using Assignment1.Warriors;
 using System.Diagnostics;
 
 namespace ConsoleApp1
