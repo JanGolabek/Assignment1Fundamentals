@@ -11,29 +11,32 @@ namespace ConsoleApp1
             string warriorName = Console.ReadLine();
             Warrior warrior = new Warrior();
             Warrior createdWarrior = warrior.CreateWarrior(warriorName);
-            createdWarrior.EquipItem();
 
-            while (true) {
-                createdWarrior.EquipItem();
-                PrintOutWarrior(createdWarrior);
-            Console.WriteLine("Would you like to level up?");
-            string levelUpAnswer = Console.ReadLine();
-            if(levelUpAnswer == "y")
+            while (true)
             {
-                createdWarrior.LevelUp();
-            }
-            else if (levelUpAnswer == "exit"){
+                PrintOutWarrior(createdWarrior);
+                Console.WriteLine("Would you like to level up?");
+                string levelUpAnswer = Console.ReadLine();
+
+                if (levelUpAnswer == "y")
+                {
+                    createdWarrior.LevelUp();
+                }
+                else if (levelUpAnswer == "exit")
+                {
                     break;
-            }
+                }
                 else
                 {
                     Console.WriteLine(
                         "Invalid input. Please enter 'y' to level up or 'exit' to quit."
-                        );
+                    );
                 }
             }
+
             Console.WriteLine("Exiting the program.");
         }
+
         public static void PrintOutWarrior(Warrior warrior)
         {
             Console.WriteLine("Name: " + warrior.Name +

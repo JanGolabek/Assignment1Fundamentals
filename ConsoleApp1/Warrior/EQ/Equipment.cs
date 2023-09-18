@@ -30,9 +30,9 @@ using Assignment1.Warrior.EQ.Items;
 // whether it's armor, weapons, or other items.
 internal class Equipment
 {
-    public Item HeadItem { get; set; }
-    public Item BodyItem { get; set; }
-    public Item LegsItem { get; set; }
+    public ArmorItem HeadItem { get; set; }
+    public ArmorItem BodyItem { get; set; }
+    public ArmorItem LegsItem { get; set; }
     public Item WeaponItem { get; set; }
 
     public static WeaponItem SuperSword { get; } = new WeaponItem()
@@ -82,7 +82,7 @@ internal class Equipment
         { CharacterClass.Barbarian },
         Slot = Slot.Legs,
         RequiredLevel = 2,
-        ArmorAttribute = 6,
+        ArmorAttribute = 60,
     };
 
     public static ArmorItem AirForceOne { get; } = new ArmorItem()

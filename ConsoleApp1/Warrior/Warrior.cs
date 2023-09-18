@@ -29,10 +29,17 @@ namespace Assignment1.Warrior
         public int Damage { get; set; }
 
 
+        public void SetAttributes(HeroAttribute totalAttributes)
+        {
+            Attributes = totalAttributes;
+        }
+
+
         public void LevelUp()
         {
             Level++;
-            EquipItem(); 
+            EquipItem();
+
             // Try and equip the items with higher required level each time warrior levels up
 
             // Increase attributes based on character class
@@ -51,6 +58,8 @@ namespace Assignment1.Warrior
                     Attributes.Increase(3, 2, 1); // Increase attributes for a barbarian
                     break;
             }
+            HeroAttribute totalAttributes = CalculateTotalAttributes();
+            SetAttributes(totalAttributes);
         }
 
         // Common base class Item, both WeaponItem and
@@ -85,6 +94,10 @@ namespace Assignment1.Warrior
             Equipment.HeadItem = FindBestArmor(Slot.Head, equippableItems);
             Equipment.BodyItem = FindBestArmor(Slot.Body, equippableItems);
             Equipment.LegsItem = FindBestArmor(Slot.Legs, equippableItems);
+
+            // Calculate the new total attributes
+            HeroAttribute totalAttributes = CalculateTotalAttributes();
+            SetAttributes(totalAttributes);
 
         }
 
@@ -132,16 +145,57 @@ namespace Assignment1.Warrior
             }
 
             Equipment equipment = new Equipment();
+
             Warrior warrior = new Warrior()
             {
                 Name = name,
                 Class = characterClass,
                 Attributes = attributes,
                 Equipment = equipment,
-                Level = 1,
+                Level = 0,
                 Damage = 1,
             };
+
             return warrior;
+        }
+        public HeroAttribute CalculateTotalAttributes()
+        {
+            // Calculate the sum of leveling attributes
+            int levelingStrength = Attributes.Strength;
+            int levelingDexterity = Attributes.Dexterity;
+            int levelingIntelligence = Attributes.Intelligence;
+
+            // Calculate the sum of armor attributes from equipment
+            int equipmentStrength = 0;
+            int equipmentDexterity = 0;
+            int equipmentIntelligence = 0;
+
+            if (Equipment != null)
+            {
+                if (Equipment.HeadItem != null)
+                {
+                    equipmentStrength += Equipment.HeadItem.ArmorAttribute;
+                }
+                if (Equipment.BodyItem != null)
+                {
+                    equipmentDexterity += Equipment.BodyItem.ArmorAttribute;
+                }
+                if (Equipment.LegsItem != null)
+                {
+                    equipmentIntelligence += Equipment.LegsItem.ArmorAttribute;
+                }
+                // Add attributes from other equipment slots as needed
+            }
+
+            // Calculate the total attributes as a HeroAttribute object
+            HeroAttribute totalAttributes = new HeroAttribute
+            {
+                Strength = levelingStrength + equipmentStrength,
+                Dexterity = levelingDexterity + equipmentDexterity,
+                Intelligence = levelingIntelligence + equipmentIntelligence
+            };
+
+            return totalAttributes;
         }
 
     }
